@@ -3,7 +3,7 @@
     "description": "Yii2 city component extension",
     "type": "yii2-extension",
     "keywords": ["yii2","extension","city","component","geo-ip","free-geo-ip"],
-    "license": "BSD-4-Clause",
+    "license": "BSD-2-Clause",
     "authors": [
         {
             "name": "Omny",
