@@ -1,0 +1,21 @@
+{
+    "name": "omny/yii2-city-component",
+    "description": "Yii2 city component extension",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension","city","component","geo-ip","free-geo-ip"],
+    "license": "BSD-4-Clause",
+    "authors": [
+        {
+            "name": "Omny",
+            "email": "hello.omny@gmail.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "omny\\yii2-city-comonent\\": ""
+        }
+    }
+}
