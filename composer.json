@@ -11,11 +11,35 @@
         }
     ],
     "require": {
-        "yiisoft/yii2": "*"
+        "php": ">=5.4.0",
+
+        "yiisoft/yii2": ">=2.0.5",
+        "yiisoft/yii2-httpclient": "*",
+
+        "yiisoft/yii2-bootstrap": "*",
+        "kak/select2": "dev-master"
     },
-    "autoload": {
+    "require-dev": {
+        "yiisoft/yii2-codeception": "*",
+        "yiisoft/yii2-debug": "*",
+        "yiisoft/yii2-gii": "*",
+        "yiisoft/yii2-faker": "*"
+    },
+    "autoload-dev": {
         "psr-4": {
-            "omny\\yii2-city-comonent\\": ""
+            "omny\\yii2\\city\\component\\": "src/"
+        }
+    },
+    "extra": {
+        "bootstrap": "omny\\yii2\\city\\component\\Bootstrap"
+    },
+    "config": {
+        "process-timeout": 1800,
+        "fxp-asset":{
+            "installer-paths": {
+                "npm-asset-library": "vendor/npm",
+                "bower-asset-library": "vendor/bower"
+            }
         }
     }
 }
