@@ -17,7 +17,7 @@
         "yiisoft/yii2-httpclient": "*",
 
         "yiisoft/yii2-bootstrap": "*",
-        "kak/select2": "dev-master"
+        "kak/select2": "*"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
