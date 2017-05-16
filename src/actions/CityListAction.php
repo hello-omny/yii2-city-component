@@ -13,8 +13,9 @@ class CityListAction extends BaseAction
     public $viewTitle = 'Выберете город';
     public $itemViewFile = '_item-city';
 
-    public function run()
+    public function run($id)
     {
+        $this->setRegionCookie($id);
         $regionModel = \Yii::$app->city->getRegion();
 
         $models = Freegeoip::find()

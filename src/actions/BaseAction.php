@@ -2,8 +2,10 @@
 
 namespace omny\yii2\city\component\actions;
 
+use omny\yii2\city\component\components\CityComponent;
+use omny\yii2\city\component\models\Freegeoip;
 use yii\base\Action;
-use yii\base\InvalidConfigException;
+use yii\web\Cookie;
 
 /**
  * Class BaseAction
@@ -17,8 +19,6 @@ class BaseAction extends Action
 
     public function init()
     {
-        $this->validateSettings();
-
         $controller = $this->controller;
         $view = $controller->view;
 
@@ -29,16 +29,52 @@ class BaseAction extends Action
     }
 
     /**
-     * @throws InvalidConfigException
+     * @param $id
      */
-    private function validateSettings()
+    protected function setRegionCookie($id)
     {
-        if (empty($this->viewTitle)) {
-            throw new InvalidConfigException('ViewTitle must be set.');
-        }
+        /** @var CityComponent $cityComponent */
+        $cityComponent = \Yii::$app->city;
+        $cityComponent->setRegion($id);
 
-        if (empty($this->itemViewFile)) {
-            throw new InvalidConfigException('ItemViewFile must be set.');
-        }
+        $this->addCookie(
+            Freegeoip::COOKIE_REGION_ID,
+            $cityComponent->getRegion()->id,
+            strtotime("+1 month", time())
+        );
+    }
+
+    /**
+     * @param $id
+     */
+    protected function setCityCookie($id)
+    {
+        /** @var CityComponent $cityComponent */
+        $cityComponent = \Yii::$app->city;
+        $cityComponent->setCity($id);
+
+        $this->addCookie(
+            Freegeoip::COOKIE_CITY_ID,
+            $cityComponent->getCity()->id,
+            strtotime("+1 month", time())
+        );
+    }
+
+    /**
+     * @param $name string
+     * @param $value int
+     * @param $expire int
+     */
+    private function addCookie($name, $value, $expire)
+    {
+        $response = \Yii::$app->response;
+
+        $cityCookie = new Cookie([
+            'name' => $name,
+            'value' => $value,
+            'expire' => $expire,
+        ]);
+
+        $response->cookies->add($cityCookie);
     }
 }
