@@ -36,7 +36,7 @@ class ChoseRegionAjaxAction extends Action
             ->byRegionIsoCode($cityComponent->getRegion()->subdivision_1_iso_code)
             ->all();
 
-        $this->controller->viewPath = '@omny/yii2/city/component/widgets/views';
+        $this->controller->viewPath = '@omny/yii2/city/widget/views';
 
         \Yii::$app->response->format = Response::FORMAT_HTML;
 
