@@ -14,8 +14,9 @@ class ChoseCityAction extends BaseAction
     public function run($id)
     {
         $this->setCityCookie($id);
+        $defaultReturnUrl = CityComponent::$returnUrl;
 
-        return \Yii::$app->response->redirect(CityComponent::$returnUrl);
+        return $this->controller->goBack($defaultReturnUrl);
     }
 
 }
