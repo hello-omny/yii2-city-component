@@ -99,6 +99,17 @@ class CityComponent extends Component
     }
 
     /**
+     * @return Freegeoip[]|null
+     */
+    public function getRegionCities()
+    {
+        return Freegeoip::find()
+            ->where(['subdivision_1_iso_code' => $this->region->subdivision_1_iso_code])
+            ->andWhere(['not', ['city_name' => null]])
+            ->all();
+    }
+
+    /**
      * @param $options
      */
     private function setup($options)

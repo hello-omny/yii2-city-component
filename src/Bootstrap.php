@@ -21,6 +21,8 @@ class Bootstrap implements BootstrapInterface
             'city' => Module::className(),
         ]);
 
+        \Yii::$app->city->init();
+
         $app->getUrlManager()->addRules($this->routes, true);
     }
 }
