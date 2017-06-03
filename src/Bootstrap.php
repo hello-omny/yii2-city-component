@@ -13,16 +13,18 @@ class Bootstrap implements BootstrapInterface
 
     public function bootstrap($app)
     {
-        $app->setComponents([
-            'city' => CityComponent::className()
-        ]);
+        if (!($app instanceof \yii\console\Application)) {
+            $app->setComponents([
+                'city' => CityComponent::className()
+            ]);
 
-        $app->setModules([
-            'city' => Module::className(),
-        ]);
+            $app->setModules([
+                'city' => Module::className(),
+            ]);
 
-        \Yii::$app->city->init();
+            \Yii::$app->city->init();
 
-        $app->getUrlManager()->addRules($this->routes, true);
+            $app->getUrlManager()->addRules($this->routes, true);
+        }
     }
 }
