@@ -42,10 +42,15 @@ class FreeGeoApiGateway extends Component
     {
         $client = new Client();
 
-        $response = $client->createRequest()
-            ->setMethod('get')
-            ->setUrl($this->requestUrl)
-            ->send();
+        try {
+            $response = $client->createRequest()
+                ->setMethod('get')
+                ->setUrl($this->requestUrl)
+                ->send();
+        } catch (\Exception $exception) {
+            \Yii::warning($exception->getMessage());
+            return null;
+        }
 
         if ($response->isOk) {
             return $response->data;

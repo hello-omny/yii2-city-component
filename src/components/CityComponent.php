@@ -149,13 +149,7 @@ class CityComponent extends Component
      */
     private function getModelFromUserIp()
     {
-        $geoIpModel = $this->getGeoIpModelByUserIP();
-
-        if (!is_null($geoIpModel)) {
-            return $geoIpModel;
-        }
-
-        return null;
+        return $this->getGeoIpModelByUserIP();
     }
 
     /**
