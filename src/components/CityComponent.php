@@ -3,6 +3,7 @@
 namespace omny\yii2\city\component\components;
 
 use omny\yii2\city\component\models\Freegeoip;
+use Yii;
 use yii\base\Component;
 use yii\web\Cookie;
 
@@ -114,7 +115,7 @@ class CityComponent extends Component
      */
     private function setup($options)
     {
-        $cookies = \Yii::$app->request->cookies;
+        $cookies = Yii::$app->request->cookies;
 
         foreach ($options as $key => $property) {
             if ($cookies->has($key)) {
@@ -135,7 +136,7 @@ class CityComponent extends Component
     private function setupCountyIsoCode()
     {
         $countryIsoCode = $this->city->country_iso_code;
-        $cookieCollection = \Yii::$app->response->cookies;
+        $cookieCollection = Yii::$app->response->cookies;
         $cookie = new Cookie([
             'name' => Freegeoip::COOKIE_COUNTRY_ISO,
             'value' => $countryIsoCode,
@@ -174,7 +175,7 @@ class CityComponent extends Component
      */
     private function getGeoIpModelByUserIP()
     {
-        $request = \Yii::$app->request;
+        $request = Yii::$app->request;
 
         $ip = $request->userIP;
 
@@ -182,11 +183,8 @@ class CityComponent extends Component
             $ip = $this->testIp;
         }
 
-        $freeGeoClient = new FreeGeoApiGateway([
-            'ip' => $ip,
-        ]);
-
-        $response = $freeGeoClient->getData();
+        $freeGeoClient = new FreeGeoApiGateway();
+        $response = $freeGeoClient->getData($ip);
 
         if (!is_null($response)) {
             return $this->findGeoIpModel($response);

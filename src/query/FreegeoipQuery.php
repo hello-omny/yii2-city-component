@@ -2,12 +2,14 @@
 
 namespace omny\yii2\city\component\query;
 
+use yii\db\ActiveQuery;
+
 /**
  * This is the ActiveQuery class for [[\omny\yii2\city\component\entity\FreegeoipEntity]].
  *
  * @see \omny\yii2\city\component\entity\FreegeoipEntity
  */
-class FreegeoipQuery extends \yii\db\ActiveQuery
+class FreegeoipQuery extends ActiveQuery
 {
     /**
      * @inheritdoc

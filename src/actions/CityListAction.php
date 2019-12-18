@@ -8,7 +8,7 @@ use omny\yii2\city\component\models\Freegeoip;
  * Class CityListAction
  * @package omny\yii2\city\component\actions
  */
-class CityListAction extends BaseAction
+class CityListAction extends AbstractAction
 {
     public $viewTitle = 'Выберете город';
     public $itemViewFile = '_item-city';

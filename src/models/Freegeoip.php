@@ -13,5 +13,4 @@ class Freegeoip extends FreegeoipEntity
     const COOKIE_REGION_ID = 'cityComponent_regionIdValue';
     const COOKIE_CITY_ID = 'cityComponent_cityIdValue';
     const COOKIE_COUNTRY_ISO = 'cityComponent_countryIsoValue';
-
 }

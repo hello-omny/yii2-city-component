@@ -5,7 +5,7 @@ namespace omny\yii2\city\component\entity;
 use \omny\yii2\city\component\query\FreegeoipQuery;
 
 /**
- * This is the model class for table "{{%freegeoip}}".
+ * This is the model class for table "freegeoip".
  *
  * @property integer $id
  * @property string $continent_code
@@ -32,7 +32,7 @@ class FreegeoipEntity extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return '{{%freegeoip}}';
+        return 'freegeoip';
     }
 
     /**

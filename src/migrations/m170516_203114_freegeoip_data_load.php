@@ -22,5 +22,4 @@ class m170516_203114_freegeoip_data_load extends Migration
     {
         $this->truncateTable('freegeoip');
     }
-
 }

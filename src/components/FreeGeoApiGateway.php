@@ -2,6 +2,7 @@
 
 namespace omny\yii2\city\component\components;
 
+use Yii;
 use yii\base\Component;
 use yii\httpclient\Client;
 
@@ -11,33 +12,27 @@ use yii\httpclient\Client;
  */
 class FreeGeoApiGateway extends Component
 {
-    public $apiRequest = "http://freegeoip.net";
-    public $format = "json";
-    public $ip;
+    private const API_URL = 'https://freegeoip.app';
+    private const FORMAT_JSON = 'json';
 
-    private $requestUrl = null;
+    /** @var null */
+    private $url = null;
 
-    public function init()
+    /**
+     * @param string $ip
+     * @return mixed|null
+     */
+    public function getData(string $ip)
     {
-        parent::init();
+        // TODO: validate ip string
+        $this->url = sprintf('%s/%s/%s', self::API_URL, self::FORMAT_JSON, $ip);
 
-        $this->setRequestUrl();
+        return $this->getResponse();
     }
 
-    public function getData()
-    {
-        if (isset($this->ip)) {
-            return $this->getResponse();
-        }
-
-        return null;
-    }
-
-    private function setRequestUrl()
-    {
-        $this->requestUrl = $this->apiRequest . "/" . $this->format . "/" . $this->ip;
-    }
-
+    /**
+     * @return mixed|null
+     */
     private function getResponse()
     {
         $client = new Client();
@@ -45,15 +40,15 @@ class FreeGeoApiGateway extends Component
         try {
             $response = $client->createRequest()
                 ->setMethod('get')
-                ->setUrl($this->requestUrl)
+                ->setUrl($this->url)
                 ->send();
-        } catch (\Exception $exception) {
-            \Yii::warning($exception->getMessage());
-            return null;
-        }
 
-        if ($response->isOk) {
-            return $response->data;
+            if ($response->isOk) {
+                return $response->data;
+            }
+        } catch (\Exception $exception) {
+            Yii::warning($exception->getMessage());
+            return null;
         }
 
         return null;

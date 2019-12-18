@@ -8,7 +8,7 @@ use omny\yii2\city\component\components\CityComponent;
  * Class ChoseRegionAction
  * @package omny\yii2\city\component\actions
  */
-class ChoseRegionAction extends BaseAction
+class ChoseRegionAction extends AbstractAction
 {
     public function run($id)
     {

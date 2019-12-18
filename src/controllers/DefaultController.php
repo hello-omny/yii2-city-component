@@ -16,27 +16,30 @@ use yii\web\Controller;
  */
 class DefaultController extends Controller
 {
-    public function actions()
+    /**
+     * @return array
+     */
+    public function actions(): array
     {
         return array_merge(
+            parent::actions(),
             [
                 CityComponent::ACTION_REGION_LIST => [
-                    'class' => RegionListAction::className(),
+                    'class' => RegionListAction::class,
                 ],
                 CityComponent::ACTION_CITY_LIST => [
-                    'class' => CityListAction::className(),
+                    'class' => CityListAction::class,
                 ],
                 CityComponent::ACTION_CHOSE_CITY => [
-                    'class' => ChoseCityAction::className(),
+                    'class' => ChoseCityAction::class,
                 ],
                 CityComponent::ACTION_CHOSE_REGION => [
-                    'class' => ChoseRegionAction::className(),
+                    'class' => ChoseRegionAction::class,
                 ],
                 CityComponent::ACTION_CHOSE_REGION_AJAX => [
-                    'class' => ChoseRegionAjaxAction::className(),
+                    'class' => ChoseRegionAjaxAction::class,
                 ]
-            ],
-            parent::actions()
+            ]
         );
     }
 }
