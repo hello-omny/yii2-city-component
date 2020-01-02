@@ -8,10 +8,6 @@ class m170516_201443_freegeoip_structure_init extends Migration
     {
         $tableOptions = null;
 
-        if ($this->db->driverName === 'mysql') {
-            $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
-        }
-
         $this->createTable('freegeoip', [
             'id' => $this->primaryKey(),
             'continent_code' => $this->string(4),

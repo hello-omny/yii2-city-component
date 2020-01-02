@@ -1,6 +1,6 @@
 <?php
 
-namespace omny\yii2\city\component\components;
+namespace omny\yii2\geo\component\components;
 
 use Yii;
 use yii\base\Component;
@@ -8,7 +8,7 @@ use yii\httpclient\Client;
 
 /**
  * Class FreeGeoApiGateway
- * @package omny\yii2\city\component\components
+ * @package omny\yii2\geo\component\components
  */
 class FreeGeoApiGateway extends Component
 {
@@ -20,9 +20,9 @@ class FreeGeoApiGateway extends Component
 
     /**
      * @param string $ip
-     * @return mixed|null
+     * @return FreeGeoApiResponse|null
      */
-    public function getData(string $ip)
+    public function get(string $ip): ?FreeGeoApiResponse
     {
         // TODO: validate ip string
         $this->url = sprintf('%s/%s/%s', self::API_URL, self::FORMAT_JSON, $ip);
@@ -31,9 +31,9 @@ class FreeGeoApiGateway extends Component
     }
 
     /**
-     * @return mixed|null
+     * @return FreeGeoApiResponse|null
      */
-    private function getResponse()
+    private function getResponse(): ?FreeGeoApiResponse
     {
         $client = new Client();
 
@@ -44,11 +44,10 @@ class FreeGeoApiGateway extends Component
                 ->send();
 
             if ($response->isOk) {
-                return $response->data;
+                return new FreeGeoApiResponse($response->data);
             }
         } catch (\Exception $exception) {
             Yii::warning($exception->getMessage());
-            return null;
         }
 
         return null;

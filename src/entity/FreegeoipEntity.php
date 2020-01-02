@@ -1,8 +1,8 @@
 <?php
 
-namespace omny\yii2\city\component\entity;
+namespace omny\yii2\geo\component\entity;
 
-use \omny\yii2\city\component\query\FreegeoipQuery;
+use \omny\yii2\geo\component\query\FreegeoipQuery;
 
 /**
  * This is the model class for table "freegeoip".

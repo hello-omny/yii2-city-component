@@ -1,12 +1,12 @@
 <?php
 
-namespace omny\yii2\city\component\models;
+namespace omny\yii2\geo\component\models;
 
-use omny\yii2\city\component\entity\FreegeoipEntity;
+use omny\yii2\geo\component\entity\FreegeoipEntity;
 
 /**
  * Class Freegeoip
- * @package omny\yii2\city\component\models
+ * @package omny\yii2\geo\component\models
  */
 class Freegeoip extends FreegeoipEntity
 {
