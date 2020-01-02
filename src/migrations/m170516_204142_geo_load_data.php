@@ -5,11 +5,11 @@ use yii\db\Migration;
 class m170516_204142_geo_load_data extends Migration
 {
     private const FILES = [
-        '_geo_city.sql',
         '_geo_continent.sql',
         '_geo_country.sql',
         '_geo_division.sql',
         '_geo_division2.sql',
+        '_geo_city.sql',
     ];
 
     public function safeUp()
