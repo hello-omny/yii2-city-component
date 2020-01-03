@@ -16,7 +16,7 @@ class m170516_204142_geo_load_data extends Migration
     {
         ini_set('memory_limit', '256M');
         foreach (self::FILES as $dataFile) {
-            $file = file_get_contents(__DIR__ . $dataFile);
+            $file = file_get_contents(__DIR__ .'/'. $dataFile);
             $pattern = ";";
             $result = explode($pattern, $file);
 

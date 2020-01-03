@@ -9,6 +9,7 @@ use Yii;
  *
  * @property int $id
  * @property int|null $fgi_id
+ * @property string $slug
  * @property string $name
  * @property string $name_ru
  * @property int $division_id
